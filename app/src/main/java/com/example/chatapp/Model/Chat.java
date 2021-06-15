@@ -1,5 +1,5 @@
 package com.example.chatapp.Model;
-
+//潘尼亞
 public class Chat {
 
     //Variables
