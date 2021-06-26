@@ -1,5 +1,5 @@
 package com.example.chatapp.Fragments;
-//潘尼亞
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,14 +25,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class UsersFragment extends Fragment {
 
     //Widgets
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private List<Users> mUsers;
-
 
     public UsersFragment() {
         // Required empty public constructor
@@ -62,26 +60,18 @@ public class UsersFragment extends Fragment {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Users user = snapshot.getValue(Users.class);
-
                     assert user != null;
                     assert firebaseUser != null;
                     if (!user.getId().equals(firebaseUser.getUid())){
                         mUsers.add(user);
                     }
-
                     userAdapter = new UserAdapter(getContext(), mUsers);
                     recyclerView.setAdapter(userAdapter);
-
                 }
             }
-
             @Override
             public void onCancelled(@NonNull  DatabaseError error) {
-
             }
         });
-
     }
-
-
 }

@@ -1,5 +1,5 @@
 package com.example.chatapp.Model;
-//潘尼亞
+
 public class Chat {
 
     //Variables
@@ -14,7 +14,6 @@ public class Chat {
     }
 
     public Chat() {
-
     }
 
     public String getSender() {

@@ -1,5 +1,5 @@
 package com.example.chatapp.Adapter;
-//潘尼亞
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -19,16 +19,14 @@ import com.example.chatapp.R;
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
+    //Variables
     private final Context context;
     private final List<Users> mUsers;
-
-    //constructor
 
     public UserAdapter(Context context, List<Users> mUsers) {
         this.context = context;
         this.mUsers = mUsers;
     }
-
 
     @NonNull
     @Override
@@ -47,14 +45,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         }else{
             Glide.with(context).load(users.getImageURL()).into(holder.imageView);
         }
-
-
         holder.itemView.setOnClickListener(v -> {
            Intent i = new Intent(context, MessageActivity.class);
            i.putExtra("userid", users.getId());
            context.startActivity(i);
        });
-
     }
 
     @Override
@@ -62,26 +57,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return mUsers.size();
     }
 
-
-
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView username;
         public ImageView imageView;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             username = itemView.findViewById(R.id.textView30);
             imageView = itemView.findViewById(R.id.imageView);
         }
-
-
-
-
-
-
-
-
-
     }
 }

@@ -15,7 +15,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.chatapp.Fragments.ChatsFragment;
-import com.example.chatapp.Fragments.ProfileFragment;
 import com.example.chatapp.Fragments.UsersFragment;
 import com.example.chatapp.Model.Users;
 import com.google.android.material.tabs.TabLayout;
@@ -30,7 +29,6 @@ import com.google.firebase.database.ValueEventListener;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new ChatsFragment(), "Messages");
         viewPagerAdapter.addFragments(new UsersFragment(), "Users");
-        viewPagerAdapter.addFragments(new ProfileFragment(), "Profile");
 
 
         viewPager.setAdapter(viewPagerAdapter);
@@ -126,23 +123,5 @@ public class MainActivity extends AppCompatActivity {
             return titles.get(position);
         }
 
-        }
-        private void CheckStatus(String status) {
-        myRef = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("Status", status);
-        myRef.updateChildren(hashMap);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        CheckStatus("online");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        CheckStatus("Offline");
     }
 }

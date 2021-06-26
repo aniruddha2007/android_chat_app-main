@@ -1,5 +1,5 @@
 package com.example.chatapp.Model;
-//潘尼亞
+
 public class Chatlist {
 
     private String id;
@@ -7,7 +7,6 @@ public class Chatlist {
     public Chatlist(String id) {
         this.id = id;
     }
-
 
     public Chatlist() {
     }

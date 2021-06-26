@@ -1,5 +1,5 @@
 package com.example.chatapp.Adapter;
-//楊勝然
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,10 +27,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     //Firebase
     FirebaseUser fuser;
 
+    //Message side Variables
     public static final int MSG_TYPE_LEFT = 0;
     public static final int MSG_TYPE_RIGHT = 1;
-
-    //constructor
 
     public MessageAdapter(Context context, List<Chat> mChat, String imgURL) {
         this.context = context;
@@ -38,31 +37,27 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         this.imgURL = imgURL;
     }
 
-
     @NonNull
     @Override
     public MessageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         if (viewType == MSG_TYPE_RIGHT) {
             view = LayoutInflater.from(context).inflate(R.layout.chat_item_right, parent, false);
-
         } else {
             view = LayoutInflater.from(context).inflate(R.layout.chat_item_left, parent, false);
         }
-        return new MessageAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
         Chat chat = mChat.get(position);
         holder.show_message.setText(chat.getMessage());
-
         if(imgURL.equals("default")){
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
         }else{
             Glide.with(context).load(imgURL).into(holder.profile_image);
         }
-
     }
 
     @Override
@@ -70,19 +65,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         return mChat.size();
     }
 
-
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView show_message;
         public ImageView profile_image;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             show_message = itemView.findViewById(R.id.show_message);
             profile_image = itemView.findViewById(R.id.profile_image);
         }
     }
+
     @Override
     public int getItemViewType(int position) {
         fuser = FirebaseAuth.getInstance().getCurrentUser();
@@ -94,4 +86,3 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 }
-

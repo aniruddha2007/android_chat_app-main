@@ -1,21 +1,19 @@
 package com.example.chatapp.Model;
-//潘尼亞
+
 public class Users {
     //Variables
     private String id;
     private String username;
     private String imageURL;
-    private String status;
 
     //constructors
     public Users() {
     }
 
-    public Users(String id, String username, String imageURL, String status) {
+    public Users(String id, String username, String imageURL) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
-        this.status = status;
     }
 
 
@@ -41,13 +39,5 @@ public class Users {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 }

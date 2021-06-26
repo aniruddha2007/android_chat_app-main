@@ -1,5 +1,5 @@
 package com.example.chatapp;
-//吳弼庭
+
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
